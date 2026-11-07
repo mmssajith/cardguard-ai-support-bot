@@ -105,17 +105,35 @@ Every minute of delay is a minute a fraudster can keep using the card. Banks los
 
 ---
 
-## Repository structure (planned)
+## Repository structure
 
 ```
 cardguard-ai-support-bot/
 ├── README.md
-├── knowledge-base/        # Sample FAQs, policies and articles for grounding
-├── workflows/             # Process workflow designs (block, report, dispute)
-├── intents/               # Intent definitions and sample utterances
-├── docs/                  # Architecture diagrams and screenshots
-└── demo/                  # Demo script and video link
+├── knowledge-base/                 # Grounding content (upload to eGain)
+│   ├── 01-card-security-faq.md
+│   ├── 02-lost-stolen-card-policy.md
+│   ├── 03-dispute-chargeback-policy.md
+│   ├── 04-card-replacement.md
+│   └── 05-contact-and-escalation.md
+├── intents/
+│   └── intents.md                  # 9 intents + sample utterances
+├── workflows/
+│   ├── 00-pre-chat.md
+│   ├── 01-lost-stolen-card.md
+│   ├── 02-suspicious-transaction.md
+│   ├── 03-transaction-dispute.md
+│   ├── 04-replacement-status.md
+│   └── 05-escalation.md
+├── docs/
+│   ├── agent-persona.md            # Agent instructions, welcome message, branding
+│   └── egain-setup-guide.md        # Build checklist mapped to hackathon rules
+└── demo/
+    ├── demo-script.md              # 1-min video script + 150-word description
+    └── test-cases.md               # 17 test cases for validation
 ```
+
+> **Start here:** [`docs/egain-setup-guide.md`](docs/egain-setup-guide.md)
 
 ---
 
