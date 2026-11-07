@@ -1,0 +1,218 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lanka Trust Bank – Card Support (Demo)</title>
+<meta name="description" content="Fictional demo bank landing page for the CardGuard AI support bot hackathon project.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#0B2545; --navy-2:#13315C; --teal:#13A89E; --teal-d:#0E8A82;
+    --amber:#F4A261; --ink:#1B2433; --muted:#5B6678; --bg:#F5F8FB; --card:#FFFFFF; --line:#E3E9F0;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,sans-serif;color:var(--ink);background:var(--bg);line-height:1.55}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 20px}
+
+  .demo-bar{background:var(--amber);color:#3a2410;font-size:13px;font-weight:600;text-align:center;padding:8px 16px}
+
+  header{background:var(--navy);color:#fff}
+  .nav{display:flex;align-items:center;justify-content:space-between;height:68px}
+  .logo{display:flex;align-items:center;gap:10px;font-weight:700;font-size:19px;letter-spacing:.2px}
+  .logo svg{flex:none}
+  .links{display:flex;gap:26px;font-size:14px;opacity:.9}
+  .links a:hover{color:var(--teal)}
+  .btn{display:inline-flex;align-items:center;gap:8px;border-radius:10px;padding:11px 18px;font-weight:600;font-size:14px;border:0;cursor:pointer}
+  .btn-teal{background:var(--teal);color:#fff}
+  .btn-teal:hover{background:var(--teal-d)}
+  .btn-ghost{background:rgba(255,255,255,.1);color:#fff;border:1px solid rgba(255,255,255,.25)}
+
+  .hero{background:linear-gradient(135deg,var(--navy) 0%,var(--navy-2) 60%,#1d4a7a 100%);color:#fff;padding:70px 0 90px}
+  .hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:48px;align-items:center}
+  .pill{display:inline-block;background:rgba(19,168,158,.18);color:#7fe3da;border:1px solid rgba(19,168,158,.45);padding:5px 12px;border-radius:99px;font-size:12px;font-weight:600;margin-bottom:18px}
+  h1{font-size:44px;line-height:1.12;font-weight:700;margin-bottom:16px}
+  h1 span{color:var(--teal)}
+  .hero p{font-size:17px;opacity:.88;max-width:520px;margin-bottom:28px}
+  .cta{display:flex;gap:12px;flex-wrap:wrap}
+  .hero-card{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.15);border-radius:18px;padding:26px}
+  .bank-card{background:linear-gradient(135deg,#13A89E,#0B6F86);border-radius:16px;padding:22px;height:190px;display:flex;flex-direction:column;justify-content:space-between;box-shadow:0 20px 40px rgba(0,0,0,.25)}
+  .bank-card .top{display:flex;justify-content:space-between;font-size:13px;font-weight:600}
+  .chip{width:42px;height:30px;border-radius:6px;background:linear-gradient(135deg,#f6d58e,#c9a14a)}
+  .num{font-size:19px;letter-spacing:3px;font-weight:600}
+  .bank-card .bottom{display:flex;justify-content:space-between;font-size:12px;opacity:.9}
+  .status{margin-top:18px;display:flex;align-items:center;gap:10px;font-size:14px}
+  .dot{width:10px;height:10px;border-radius:50%;background:#2ee6a0;box-shadow:0 0 0 4px rgba(46,230,160,.2)}
+
+  section{padding:64px 0}
+  .sec-title{font-size:28px;font-weight:700;margin-bottom:8px}
+  .sec-sub{color:var(--muted);margin-bottom:32px}
+  .grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+  .tile{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:22px;transition:.2s}
+  .tile:hover{border-color:var(--teal);transform:translateY(-2px);box-shadow:0 10px 24px rgba(11,37,69,.08)}
+  .ico{width:44px;height:44px;border-radius:12px;background:rgba(19,168,158,.12);display:grid;place-items:center;margin-bottom:14px}
+  .tile h3{font-size:16px;margin-bottom:6px}
+  .tile p{font-size:14px;color:var(--muted)}
+  .tile .ask{display:inline-block;margin-top:12px;font-size:13px;color:var(--teal-d);font-weight:600}
+
+  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  .step{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:22px}
+  .step b{display:inline-grid;place-items:center;width:30px;height:30px;border-radius:50%;background:var(--navy);color:#fff;font-size:14px;margin-bottom:12px}
+
+  .warn{background:#FFF6EE;border:1px solid #F7D3B3;border-radius:14px;padding:22px 24px;display:flex;gap:16px;align-items:flex-start}
+  .warn h3{font-size:16px;margin-bottom:4px}
+  .warn p{font-size:14px;color:#6b4a2f}
+
+  .faq{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  details{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px 18px}
+  summary{cursor:pointer;font-weight:600;font-size:15px}
+  details p{margin-top:10px;font-size:14px;color:var(--muted)}
+
+  .contact{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  .contact .tile h3{font-size:15px}
+
+  footer{background:var(--navy);color:#c8d3e3;font-size:13px;padding:30px 0}
+  footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+  footer a{color:#7fe3da}
+
+  @media (max-width:900px){
+    .hero-grid{grid-template-columns:1fr}
+    .grid4{grid-template-columns:1fr 1fr}
+    .steps,.contact,.faq{grid-template-columns:1fr}
+    .links{display:none}
+    h1{font-size:34px}
+  }
+  @media (max-width:520px){ .grid4{grid-template-columns:1fr} }
+</style>
+</head>
+<body>
+
+<div class="demo-bar">⚠️ Demo only — Lanka Trust Bank is a fictional bank created for the CardGuard hackathon project. No real accounts or data.</div>
+
+<header>
+  <div class="wrap nav">
+    <a class="logo" href="#">
+      <svg width="32" height="32" viewBox="0 0 32 32" aria-hidden="true"><path d="M16 2 4 7v8c0 7.2 5.1 13.4 12 15 6.9-1.6 12-7.8 12-15V7L16 2Z" fill="#13A89E"/><path d="m11 16 3.5 3.5L21.5 12" stroke="#fff" stroke-width="2.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      Lanka Trust Bank
+    </a>
+    <nav class="links">
+      <a href="#help">Card Help</a>
+      <a href="#how">How it works</a>
+      <a href="#faq">FAQs</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <a class="btn btn-ghost" href="#contact">24/7 Hotline</a>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="pill">Card Support · Available 24/7</span>
+      <h1>Lost your card or spotted a <span>strange charge?</span></h1>
+      <p>Chat with <strong>CardGuard</strong>, our AI card security assistant. Freeze or block your card, report fraud, dispute a charge or track your replacement — in under a minute.</p>
+      <div class="cta">
+        <span class="btn btn-teal">💬 Click the chat icon to start →</span>
+        <a class="btn btn-ghost" href="#faq">Read FAQs</a>
+      </div>
+    </div>
+    <div class="hero-card">
+      <div class="bank-card">
+        <div class="top"><span>LANKA TRUST</span><span>DEBIT</span></div>
+        <div class="chip"></div>
+        <div class="num">•••• •••• •••• 4821</div>
+        <div class="bottom"><span>DEMO CARDHOLDER</span><span>12/29</span></div>
+      </div>
+      <div class="status"><span class="dot"></span> CardGuard is online — average response under 5 seconds</div>
+    </div>
+  </div>
+</section>
+
+<section id="help">
+  <div class="wrap">
+    <h2 class="sec-title">What CardGuard can help with</h2>
+    <p class="sec-sub">Open the chat and pick an option, or just type what happened.</p>
+    <div class="grid4">
+      <div class="tile">
+        <div class="ico">🔒</div>
+        <h3>Lost or stolen card</h3>
+        <p>Freeze it temporarily or block it permanently, then order a replacement.</p>
+        <span class="ask">Try: “I lost my debit card”</span>
+      </div>
+      <div class="tile">
+        <div class="ico">🚨</div>
+        <h3>Suspicious transaction</h3>
+        <p>Protect your card first, then report charges you don't recognise.</p>
+        <span class="ask">Try: “I didn't make this payment”</span>
+      </div>
+      <div class="tile">
+        <div class="ico">🧾</div>
+        <h3>Dispute a charge</h3>
+        <p>Charged twice, wrong amount, or never received your order.</p>
+        <span class="ask">Try: “I want to dispute a charge”</span>
+      </div>
+      <div class="tile">
+        <div class="ico">📦</div>
+        <h3>Replacement card</h3>
+        <p>Delivery options, timelines and how to activate your new card.</p>
+        <span class="ask">Try: “When will my new card arrive?”</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="how" style="padding-top:0">
+  <div class="wrap">
+    <h2 class="sec-title">How it works</h2>
+    <p class="sec-sub">Fast, guided and safe — with a human specialist whenever you need one.</p>
+    <div class="steps">
+      <div class="step"><b>1</b><h3>Tell us what happened</h3><p class="sec-sub" style="margin:6px 0 0">A few quick questions help CardGuard route you to the right help instantly.</p></div>
+      <div class="step"><b>2</b><h3>Secure your card</h3><p class="sec-sub" style="margin:6px 0 0">Step-by-step guidance to freeze, block or dispute — with a reference number.</p></div>
+      <div class="step"><b>3</b><h3>Get a specialist if needed</h3><p class="sec-sub" style="margin:6px 0 0">High-risk cases go straight to our Fraud team with your details, so you never repeat yourself.</p></div>
+    </div>
+    <div class="warn" style="margin-top:22px">
+      <div style="font-size:26px">🛡️</div>
+      <div>
+        <h3>We will never ask for your PIN, CVV, OTP or password</h3>
+        <p>Not by phone, SMS, email or chat. CardGuard only ever needs the last 4 digits of your card. If anyone asks for these details, it's a scam.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="faq" style="padding-top:0">
+  <div class="wrap">
+    <h2 class="sec-title">Frequently asked questions</h2>
+    <p class="sec-sub">Quick answers — or ask CardGuard for more detail.</p>
+    <div class="faq">
+      <details><summary>What's the difference between freezing and blocking?</summary><p>Freezing pauses your card and can be undone any time. Blocking cancels it permanently and a new card with a new number is issued.</p></details>
+      <details><summary>How long does a replacement card take?</summary><p>Standard delivery takes 5–7 business days, branch pickup 2–3 days, and express courier 1–2 days (Colombo & suburbs).</p></details>
+      <details><summary>Am I liable for fraudulent transactions?</summary><p>If you report promptly and haven't shared your PIN or OTP, you're generally not liable for transactions made after reporting.</p></details>
+      <details><summary>How long do I have to dispute a charge?</summary><p>Within 60 days of the transaction date. Most disputes are resolved within 30–45 days.</p></details>
+    </div>
+  </div>
+</section>
+
+<section id="contact" style="padding-top:0">
+  <div class="wrap">
+    <h2 class="sec-title">Other ways to reach us</h2>
+    <p class="sec-sub">All contact details below are demonstration values.</p>
+    <div class="contact">
+      <div class="tile"><div class="ico">📞</div><h3>24-hour Card Hotline</h3><p>+94 11 000 0000 (demo)</p></div>
+      <div class="tile"><div class="ico">✉️</div><h3>Email</h3><p>cardcare@lankatrustbank.example (demo)</p></div>
+      <div class="tile"><div class="ico">🏦</div><h3>Visit a branch</h3><p>Mon–Fri, 9am–3pm</p></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 Lanka Trust Bank (fictional). Built for the <a href="https://build-a-working-ai-support-bot.devpost.com/">Build a Working AI Support Bot</a> hackathon.</span>
+    <span>Powered by eGain AI Agent · <a href="https://github.com/mmssajith/cardguard-ai-support-bot">Source on GitHub</a></span>
+  </div>
+</footer>
+
+</body>
+</html>
